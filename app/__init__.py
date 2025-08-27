@@ -46,8 +46,9 @@ def create_app() -> Flask:
         tipo_especialidad_bp,
         plan_bp,
         cargo_bp,
-        alumno_bp
+        alumno_bp,
     )
+    from app.resources.ficha_alumno_resource import ficha_bp  
 
     app.register_blueprint(home, url_prefix="/sys")
     app.register_blueprint(universidad_bp, url_prefix="/sys")
@@ -63,6 +64,7 @@ def create_app() -> Flask:
     app.register_blueprint(plan_bp, url_prefix="/sys")
     app.register_blueprint(cargo_bp, url_prefix="/sys")
     app.register_blueprint(alumno_bp, url_prefix="/sys")
+    app.register_blueprint(ficha_bp, url_prefix="/sys")  
 
     @app.shell_context_processor
     def ctx():

@@ -34,6 +34,20 @@ class AlumnoService:
     @staticmethod
     def buscar_todos() -> list[Alumno]:
         return AlumnoRepository.buscar_todos()
+    
+    
+    def get_ficha(self, nro_legajo: int):
+        alumno = self.repo.get_by_legajo(nro_legajo)
+        if not alumno:
+            return None
+
+        return {
+            "nro_legajo": alumno.nro_legajo,
+            "apellido": alumno.apellido,
+            "nombre": alumno.nombre,
+            "facultad": alumno.especialidad.facultad.nombre
+        }
+
 
     @staticmethod
     def actualizar(id: int, alumno: Alumno) -> Optional[Alumno]:
