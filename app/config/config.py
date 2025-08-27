@@ -52,7 +52,6 @@ class ProductionConfig(Config):
         Config.init_app(app)
 
 def factory(app_context: str) -> type[Config]:
-    """Devuelve la CLASE de config según el contexto."""
     configuration: dict[str, type[Config]] = {
         'testing': TestConfig,
         'development': DevelopmentConfig,
